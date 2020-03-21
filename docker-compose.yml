@@ -6,6 +6,14 @@ services:
       POSTGRES_HOST_AUTH_METHOD: "trust"
   redis:
     image: 'redis:latest'
+  nginx:
+    restart: always
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '80:80'
+    
   api:
     build:
       dockerfile: Dockerfile.dev
